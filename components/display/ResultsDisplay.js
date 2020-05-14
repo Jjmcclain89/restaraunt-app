@@ -6,7 +6,7 @@ const ResultsDisplay = (props) => {
     const { restaraunts, setRestaraunts } = useContext(RestarauntContext);
 
     return (
-        <div>
+        <div className="results-display">
             {restaraunts.map((restaraunt) => (
                 <Result key={restaraunt.id} restaraunt={restaraunt} />
             ))}
