@@ -6,6 +6,11 @@ export const RestarauntConsumer = RestarauntContext.Consumer;
 
 const RestarauntData = (props) => {
     const [restaraunts, setRestaraunts] = useState([]);
+    
+    const context = {
+        restaraunts,
+        setRestaraunts
+    }
 
     const fetchRestaraunts = async (url) => {
         const res = await fetch(url, {
@@ -23,7 +28,7 @@ const RestarauntData = (props) => {
     }, []);
 
     return (
-        <RestarauntProvider value={restaraunts}>
+        <RestarauntProvider value={context}>
             {props.children}
         </RestarauntProvider>
     );
