@@ -4,7 +4,7 @@ const Result = props => {
     const {restaraunt} = props;
     
     return (
-        <div>
+        <div className="result">
             {restaraunt.name}
         </div>
     )
