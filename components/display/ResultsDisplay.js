@@ -8,7 +8,7 @@ const ResultsDisplay = (props) => {
     return (
         <div>
             {restaraunts.map((restaraunt) => (
-                <Result restaraunt={restaraunt} />
+                <Result key={restaraunt.id} restaraunt={restaraunt} />
             ))}
         </div>
     );

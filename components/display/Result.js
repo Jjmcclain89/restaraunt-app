@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/result.scss';
 
 const Result = props => {
     const {restaraunt} = props;
