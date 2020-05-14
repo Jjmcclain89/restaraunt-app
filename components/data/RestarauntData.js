@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { RestarauntProvider } from './RestarauntContext';
 
-const App = (props) => {
+export const RestarauntContext = React.createContext();
+export const RestarauntProvider = RestarauntContext.Provider;
+export const RestarauntConsumer = RestarauntContext.Consumer;
+
+const RestarauntData = (props) => {
     const [restaraunts, setRestaraunts] = useState([]);
 
     const fetchRestaraunts = async (url) => {
@@ -26,4 +29,4 @@ const App = (props) => {
     );
 };
 
-export default App;
+export default RestarauntData;

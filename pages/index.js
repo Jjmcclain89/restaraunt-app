@@ -1,10 +1,10 @@
-import App from '../components/App';
-import ResultsDisplay from '../components/ResultsDisplay';
+import RestarauntData from '../components/data/RestarauntData';
+import ResultsDisplay from '../components/display/ResultsDisplay';
 
 export default function Home() {
     return (
-        <App>
+        <RestarauntData>
             <ResultsDisplay />
-        </App>
+        </RestarauntData>
     );
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import RestarauntContext from './RestarauntContext';
+import { RestarauntContext } from '../data/RestarauntData';
 
 const ResultsDisplay = (props) => {
     const restaraunts = useContext(RestarauntContext);
