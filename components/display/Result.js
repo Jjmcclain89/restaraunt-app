@@ -1,8 +1,12 @@
 import React from 'react';
 
 const Result = props => {
+    const {restaraunt} = props;
+    
     return (
-        <div></div>
+        <div>
+            {restaraunt.name}
+        </div>
     )
 }
 

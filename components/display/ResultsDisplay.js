@@ -7,8 +7,8 @@ const ResultsDisplay = (props) => {
 
     return (
         <div>
-            {restaraunts.map((r) => (
-                <p>{r.name}</p>
+            {restaraunts.map((restaraunt) => (
+                <Result restaraunt={restaraunt} />
             ))}
         </div>
     );
