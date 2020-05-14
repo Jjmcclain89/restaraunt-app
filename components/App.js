@@ -1,23 +1,29 @@
-import React, { useEffect } from 'react';
-
-const fetchData = async (url) => {
-    const res = await fetch(url, {
-        headers: {
-            Authorization: `Api-Key q3MNxtfep8Gt`,
-        },
-    });
-
-    const data = await res.json();
-
-    console.log(data);
-};
+import React, { useEffect, useState } from 'react';
+import { RestarauntProvider } from './RestarauntContext';
 
 const App = (props) => {
-    useEffect(() => {
-        fetchData(process.env.NEXT_PUBLIC_BACKEND_URL);
-    });
+    const [restaraunts, setRestaraunts] = useState([]);
 
-    return <div>Hello</div>;
+    const fetchRestaraunts = async (url) => {
+        const res = await fetch(url, {
+            headers: {
+                Authorization: process.env.NEXT_PUBLIC_API_KEY,
+            },
+        });
+
+        const data = await res.json();
+        setRestaraunts(data);
+    };
+
+    useEffect(() => {
+        fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
+    }, []);
+
+    return (
+        <RestarauntProvider value={restaraunts}>
+            {props.children}
+        </RestarauntProvider>
+    );
 };
 
 export default App;
