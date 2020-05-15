@@ -4,20 +4,19 @@ import ResultRow from './ResultRow';
 
 const ResultsTable = (props) => {
     const { restaraunts, setRestaraunts } = useContext(RestarauntContext);
-
     return (
-        <div className="results-table">
+        <table className="results-table">
             <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Phone</th>
-                <th>Genres</th>
+                <th><span>Name</span></th>
+                <th><span>City</span></th>
+                <th><span>State</span></th>
+                <th><span>Phone</span></th>
+                <th><span>Genres</span></th>
             </tr>
             {restaraunts.map((restaraunt) => (
                 <ResultRow key={restaraunt.id} restaraunt={restaraunt} />
             ))}
-        </div>
+        </table>
     );
 };
 
