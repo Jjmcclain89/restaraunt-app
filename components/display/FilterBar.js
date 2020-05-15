@@ -3,6 +3,7 @@ import { RestarauntContext } from '../data/RestarauntData';
 
 const FilterBar = (props) => {
     const { searchText, setSearchText } = useContext(RestarauntContext);
+    
 
     return (
         <div className='filter-bar'>
@@ -12,6 +13,7 @@ const FilterBar = (props) => {
                 onChange={(e) => setSearchText(e.target.value)}
             />
             <button>&#x1F50D;</button>
+            <StateSelect></StateSelect>
         </div>
     );
 };
