@@ -9,7 +9,7 @@ const ResultRow = (props) => {
             <td>{city}</td>
             <td>{state}</td>
             <td>{telephone}</td>
-            <td>{genre}</td>
+            <td>{genre.join(", ")}</td>
         </tr>
     );
 };
