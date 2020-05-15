@@ -8,6 +8,8 @@ const RestarauntData = (props) => {
     const [restaraunts, setRestaraunts] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [sortType, setSortType] = useState('NAME_ASC');
+    const [stateFilters, setStateFilters] = useState([]);
+    const [genreFilters, setGenreFilters] = useState([]);
 
     const sortRestaraunts = (restaraunts, sortType) => {
         let sortedCopy = [...restaraunts];
@@ -67,7 +69,9 @@ const RestarauntData = (props) => {
         searchText,
         setSearchText,
         sortType,
-        setSortType
+        setSortType,
+        stateFilters,
+        setStateFilters
     };
     return (
         <RestarauntProvider value={context}>

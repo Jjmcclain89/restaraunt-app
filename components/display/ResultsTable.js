@@ -8,7 +8,6 @@ const ResultsTable = (props) => {
     );
 
     let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
-    console.log(sortedRestaraunts);
 
     const handleNameClick = e => {
         if(sortType == 'NAME_ASC') {

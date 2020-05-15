@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { RestarauntContext } from '../data/RestarauntData';
+import StateSelect from './StateSelect';
 
 const FilterBar = (props) => {
     const { searchText, setSearchText } = useContext(RestarauntContext);
     
-
     return (
         <div className='filter-bar'>
             <input
@@ -13,7 +13,8 @@ const FilterBar = (props) => {
                 onChange={(e) => setSearchText(e.target.value)}
             />
             <button>&#x1F50D;</button>
-            <StateSelect></StateSelect>
+            
+            <StateSelect />
         </div>
     );
 };
