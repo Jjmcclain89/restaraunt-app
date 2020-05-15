@@ -1,11 +1,6 @@
 .filter-bar {
     display: flex;
+    justify-content: space-between;
 }
 
-.filter-bar__select__large {
-    width: 400px;
-}
 
-.filter-bar__select__small {
-    width: 300px;
-}
