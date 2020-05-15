@@ -43,7 +43,7 @@ const ResultsTable = (props) => {
     });
 
     sortedRestaraunts = sortedRestaraunts.filter((r) => {
-        const { genres } = r;
+        const { genre: genres } = r;
         if (genreFilters.length < 1) return true;
         for (let i = 0; i < genres.length; i++) {
             if (genreFilters.includes(genres[i])) return true;

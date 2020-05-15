@@ -1,3 +1,11 @@
+export const processRestarauntData = (data) => {
+    const finishedData = [...data];
+    finishedData.map((restaraunt) => {
+        restaraunt.genre = restaraunt.genre.split(',');
+    });
+    return finishedData;
+};
+
 export const sortRestaraunts = (restaraunts, sortType) => {
     let sortedCopy = restaraunts ? [...restaraunts] : [];
     switch (sortType) {
@@ -33,4 +41,12 @@ export const sortRestaraunts = (restaraunts, sortType) => {
             break;
     }
     return sortedCopy;
+};
+
+export const getAllGenres = (restaraunts) => {
+    if (!restaraunts) return;
+    const allGenres = new Set();
+    // Map over each genre array of each restaraunt
+    restaraunts.map((r) => r.genre.map((genre) => allGenres.add(genre)));
+    return [...allGenres];
 };

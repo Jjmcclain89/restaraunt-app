@@ -1,10 +1,13 @@
 import React, { useGenre, useContext } from 'react';
 import Select from 'react-select';
 import { RestarauntContext } from '../data/RestarauntData';
-// import GenreSelectOptions from '../../resources/GenreSelectOptions';
 
 const GenreSelect = (props) => {
-    const { genreFilters, setGenreFilters } = useContext(RestarauntContext);
+    const { selectType } = props;
+    
+    const { genreFilters, setGenreFilters, allGenres } = useContext(
+        RestarauntContext
+    );
 
     const selectedOptions = genreFilters.map((filter) => {
         return { value: filter, label: filter };
@@ -14,15 +17,19 @@ const GenreSelect = (props) => {
         setGenreFilters(selected ? selected.map((s) => s.value) : []);
     };
 
+    const GenreSelectOptions = allGenres.map((genre) => {
+        return { value: genre, label: genre };
+    });
+
     return (
         <Select
-            instanceId="1"
+            instanceId='1'
             name='genre'
             placeholder='Genre'
-            className='filter-bar__select'
+            className={`filter-bar__select__${selectType}`}
             value={selectedOptions}
             onChange={handleChange}
-            // options={}
+            options={GenreSelectOptions}
             isMulti={true}
         />
     );

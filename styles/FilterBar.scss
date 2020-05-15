@@ -2,6 +2,10 @@
     display: flex;
 }
 
-.filter-bar__select {
-    width: 200px;
+.filter-bar__select__large {
+    width: 400px;
+}
+
+.filter-bar__select__small {
+    width: 300px;
 }

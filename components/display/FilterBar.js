@@ -14,7 +14,6 @@ const FilterBar = (props) => {
                 onChange={(e) => setSearchText(e.target.value)}
             />
             <button>&#x1F50D;</button>
-            
             <StateSelect />
             <GenreSelect />
         </div>

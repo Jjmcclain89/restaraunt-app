@@ -16,10 +16,10 @@ const StateSelect = (props) => {
 
     return (
         <Select
-            instanceId="1"
+            instanceId='1'
             name='state'
             placeholder='State'
-            className='filter-bar__select'
+            className={`filter-bar__select${size && `__${size}`}`}
             value={selectedOptions}
             onChange={handleChange}
             options={StateSelectOptions}

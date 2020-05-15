@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { sortRestaraunts } from '../../resources/utils';
+import { processRestarauntData, sortRestaraunts, getAllGenres } from '../../resources/utils';
 
 export const RestarauntContext = React.createContext();
 export const RestarauntProvider = RestarauntContext.Provider;
@@ -20,7 +20,8 @@ const RestarauntData = (props) => {
         });
 
         const data = await res.json();
-        setRestaraunts(data);
+        // console.log(data);
+        setRestaraunts(processRestarauntData(data));
     };
 
     const resetFilters = () => {
