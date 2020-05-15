@@ -3,7 +3,11 @@ import { RestarauntContext } from '../data/RestarauntData';
 import ResultRow from './ResultRow';
 
 const ResultsTable = (props) => {
-    const { restaraunts, setRestaraunts } = useContext(RestarauntContext);
+    const { restaraunts, sortRestaraunts, sortType, setSortType } = useContext(RestarauntContext);
+
+    let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
+    console.log(sortedRestaraunts);
+
     return (
         <table className='results-table'>
             <tbody>
@@ -24,7 +28,7 @@ const ResultsTable = (props) => {
                         <span>Genres</span>
                     </th>
                 </tr>
-                {restaraunts.map((restaraunt) => (
+                {sortedRestaraunts.map((restaraunt) => (
                     <ResultRow key={restaraunt.id} restaraunt={restaraunt} />
                 ))}
             </tbody>

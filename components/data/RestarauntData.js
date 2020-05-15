@@ -6,53 +6,45 @@ export const RestarauntConsumer = RestarauntContext.Consumer;
 
 const RestarauntData = (props) => {
     const [restaraunts, setRestaraunts] = useState([]);
-    
-    const context = {
-        restaraunts,
-        sortRestaraunts
-    }
+    const [searchText, setSearchText] = useState('');
+    const [sortType, setSortType] = useState('NAME_ASC');
 
-    const sortRestaraunts = sortType => {
+    const sortRestaraunts = (restaraunts, sortType) => {
         let sortedCopy = [...restaraunts];
-        switch(sortType) {
+        switch (sortType) {
             case 'NAME_ASC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.name < b.name ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.name < b.name ? -1 : 1;
+                });
+                break;
             case 'NAME_DESC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.name > b.name ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.name > b.name ? -1 : 1;
+                });
+                break;
             case 'CITY_ASC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.city < b.city ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.city < b.city ? -1 : 1;
+                });
+                break;
             case 'CITY_DESC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.city > b.city ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.city > b.city ? -1 : 1;
+                });
+                break;
             case 'STATE_ASC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.state < b.state ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.state < b.state ? -1 : 1;
+                });
+                break;
             case 'STATE_DESC':
-                sortedCopy = sortedCopy.sort( (a,b)=> {
-                    return a.state > b.state ? -1 : 1; 
-                })
-                setRestaraunts(sortedCopy);
-            break;
+                sortedCopy = sortedCopy.sort((a, b) => {
+                    return a.state > b.state ? -1 : 1;
+                });
+                break;
         }
-    }
+        return sortedCopy;
+    };
 
     const fetchRestaraunts = async (url) => {
         const res = await fetch(url, {
@@ -63,13 +55,20 @@ const RestarauntData = (props) => {
 
         const data = await res.json();
         setRestaraunts(data);
-        sortRestaraunts('NAME_ASC');
     };
 
     useEffect(() => {
         fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
     }, []);
 
+    const context = {
+        restaraunts,
+        sortRestaraunts,
+        searchText,
+        setSearchText,
+        sortType,
+        setSortType
+    };
     return (
         <RestarauntProvider value={context}>
             {props.children}
