@@ -12,7 +12,7 @@ const FilterBar = (props) => {
         genreFilters,
         setGenreFilters,
         allGenres,
-        resetFilters
+        resetFilters,
     } = useContext(RestarauntContext);
 
     const selectedStates = stateFilters.map((filter) => {
@@ -61,6 +61,7 @@ const FilterBar = (props) => {
                 type='text'
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
+                placeholder='Search'
             />
             <button>&#x1F50D;</button>
             <Select {...StateSelectProps} />

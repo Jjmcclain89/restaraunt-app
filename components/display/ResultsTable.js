@@ -36,6 +36,20 @@ const ResultsTable = (props) => {
         }
     };
 
+    const searchRestaraunts = (restaraunts, searchText) => {
+        searchText = searchText.toLowerCase();
+        restaraunts = [...restaraunts].filter((r) => {
+            if (r.name.toLowerCase().includes(searchText)) return true;
+            if (r.city.toLowerCase().includes(searchText)) return true;
+
+            const { genre: genres } = r;
+            for (let i = 0; i < genres.length; i++) {
+                if (genres[i].toLowerCase().includes(searchText)) return true;
+            }
+        });
+        return restaraunts;
+    };
+
     let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
     sortedRestaraunts = sortedRestaraunts.filter((r) => {
         if (stateFilters.length < 1) return true;
@@ -49,6 +63,8 @@ const ResultsTable = (props) => {
             if (genreFilters.includes(genres[i])) return true;
         }
     });
+
+    sortedRestaraunts = searchRestaraunts(sortedRestaraunts, searchText);
 
     return (
         <>
