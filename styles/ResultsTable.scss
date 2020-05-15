@@ -4,7 +4,8 @@
     border: 2px solid $black;
     margin-bottom: 1rem;
 
-    th, td {
+    th,
+    td {
         text-align: start;
         max-width: 100%;
         white-space: nowrap;
@@ -18,7 +19,7 @@
     }
 }
 
-.results-table__state{
+.results-table__state {
     width: 75px;
 }
 
@@ -26,3 +27,23 @@
     height: 50px;
 }
 
+.page-selector {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+    
+    span:not(:nth-child(1)) {
+        margin-left: 1rem;
+    }
+    
+    span {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    
+    .selected {
+        color: blue;
+        font-size: 2em;
+    }
+}

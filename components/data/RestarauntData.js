@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { processRestarauntData, sortRestaraunts, getAllGenres } from '../../resources/utils';
+import {
+    processRestarauntData,
+    sortRestaraunts,
+    getAllGenres,
+} from '../../resources/utils';
 
 export const RestarauntContext = React.createContext();
 export const RestarauntProvider = RestarauntContext.Provider;

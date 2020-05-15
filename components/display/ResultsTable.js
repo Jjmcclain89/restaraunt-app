@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { RestarauntContext } from '../data/RestarauntData';
 import ResultRow from './ResultRow';
 import NoResults from './NoResults';
+import PageSelector from './PageSelector';
 
 const ResultsTable = (props) => {
     const {
@@ -13,6 +14,9 @@ const ResultsTable = (props) => {
         searchText,
         genreFilters,
     } = useContext(RestarauntContext);
+
+    const [pageNumber, setPageNumber] = useState(1);
+    const [resultsPerPage, setResultsPerPage] = useState(10);
 
     const handleNameClick = (e) => {
         if (sortType == 'NAME_ASC') {
@@ -66,6 +70,11 @@ const ResultsTable = (props) => {
 
     sortedRestaraunts = searchRestaraunts(sortedRestaraunts, searchText);
 
+    const totalPageCount = Math.ceil(sortedRestaraunts.length / resultsPerPage);
+
+    sortedRestaraunts = sortedRestaraunts.slice((pageNumber-1)*10, pageNumber*10);
+
+
     return (
         <>
             <table className='results-table'>
@@ -108,6 +117,12 @@ const ResultsTable = (props) => {
                 </tbody>
             </table>
             {sortedRestaraunts.length < 1 && <NoResults />}
+            <PageSelector
+                pageNumber={pageNumber}
+                setPageNumber={setPageNumber}
+                setResultsPerPage={setResultsPerPage}
+                totalPageCount={totalPageCount}
+            />
         </>
     );
 };
