@@ -44,7 +44,7 @@ const FilterBar = (props) => {
         placeholder: 'State',
         onChange: handleStateSelectChange,
         options: StateSelectOptions,
-        selectedOptions: selectedStates,
+        selected: selectedStates,
         isMulti: true,
     };
 
@@ -54,7 +54,7 @@ const FilterBar = (props) => {
         placeholder: 'What Type of Food Sounds Good?',
         onChange: handleGenreSelectChange,
         options: GenreSelectOptions,
-        selectedOptions: selectedGenres,
+        selected: selectedGenres,
         isMulti: true,
     };
 

@@ -32,18 +32,29 @@
     justify-content: flex-end;
     align-items: center;
     margin-top: 1rem;
-    
-    span:not(:nth-child(1)) {
-        margin-left: 1rem;
-    }
-    
+
     span {
         padding-right: 1rem;
         padding-left: 1rem;
     }
-    
+
     .selected {
         color: blue;
+        font-size: 1.5em;
+    }
+
+    .arrow {
         font-size: 2em;
+    }
+
+    .rpp-adjust {
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        font-size: 0.75em;
+
+        label {
+            margin-right: 0.5em;
+        }
     }
 }

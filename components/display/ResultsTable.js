@@ -72,7 +72,7 @@ const ResultsTable = (props) => {
 
     const totalPageCount = Math.ceil(sortedRestaraunts.length / resultsPerPage);
 
-    sortedRestaraunts = sortedRestaraunts.slice((pageNumber-1)*10, pageNumber*10);
+    sortedRestaraunts = sortedRestaraunts.slice((pageNumber-1)*resultsPerPage, pageNumber*resultsPerPage);
 
 
     return (
@@ -120,6 +120,7 @@ const ResultsTable = (props) => {
             <PageSelector
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
+                resultsPerPage={resultsPerPage}
                 setResultsPerPage={setResultsPerPage}
                 totalPageCount={totalPageCount}
             />

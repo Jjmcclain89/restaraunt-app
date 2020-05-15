@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import ReactSelect from 'react-select';
 
 const SelectInput = (props) => {
-    const {size, name, placeholder, onChange, options, selectedOptions, isMulti} = props;
+    const {size, name, placeholder, onChange, options, selected, isMulti} = props;
     
     return (
         <ReactSelect
@@ -10,7 +10,7 @@ const SelectInput = (props) => {
             name={name}
             placeholder={placeholder}
             className={`select${size && `__${size}`}`}
-            value={selectedOptions}
+            value={selected}
             onChange={onChange}
             options={options}
             isMulti={isMulti}
