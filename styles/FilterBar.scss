@@ -1,6 +1,13 @@
 .filter-bar {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 
+.search-bar {
+    display: flex;
 
+    input {
+        padding-left: 0.5rem;
+    }
+}

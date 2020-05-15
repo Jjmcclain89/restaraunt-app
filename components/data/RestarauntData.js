@@ -27,6 +27,7 @@ const RestarauntData = (props) => {
     const resetFilters = () => {
         setStateFilters([]);
         setGenreFilters([]);
+        setSearchText('');
     };
 
     const allGenres = getAllGenres(restaraunts);

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { RestarauntContext } from '../data/RestarauntData';
 import Select from './SelectInput';
 import StateSelectOptions from '../../resources/StateSelectOptions';
+import SearchBar from './SearchBar'
 
 const FilterBar = (props) => {
     const {
@@ -35,6 +36,8 @@ const FilterBar = (props) => {
         return { value: genre, label: genre };
     });
 
+    const handleSearchChange = (e) => setSearchText(e.target.value);
+
     const StateSelectProps = {
         size: '',
         name: 'StateSelect',
@@ -48,22 +51,21 @@ const FilterBar = (props) => {
     const GenreSelectProps = {
         size: 'large',
         name: 'GenreSelect',
-        placeholder: 'What Type of Food Sound Good?',
+        placeholder: 'What Type of Food Sounds Good?',
         onChange: handleGenreSelectChange,
         options: GenreSelectOptions,
         selectedOptions: selectedGenres,
         isMulti: true,
     };
 
+    const SearchBarProps = {
+        onChange: handleSearchChange,
+        value: searchText,
+    };
+
     return (
         <div className='filter-bar'>
-            <input
-                type='text'
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder='Search'
-            />
-            <button>&#x1F50D;</button>
+            <SearchBar {...SearchBarProps} />
             <Select {...StateSelectProps} />
             <Select {...GenreSelectProps} />
             <button onClick={resetFilters}>Reset Filters</button>
