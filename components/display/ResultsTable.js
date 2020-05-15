@@ -3,46 +3,66 @@ import { RestarauntContext } from '../data/RestarauntData';
 import ResultRow from './ResultRow';
 
 const ResultsTable = (props) => {
-    const { restaraunts, sortRestaraunts, sortType, setSortType } = useContext(
-        RestarauntContext
-    );
+    const {
+        restaraunts,
+        sortRestaraunts,
+        sortType,
+        setSortType,
+        stateFilters,
+    } = useContext(RestarauntContext);
 
-    let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
-
-    const handleNameClick = e => {
-        if(sortType == 'NAME_ASC') {
+    const handleNameClick = (e) => {
+        if (sortType == 'NAME_ASC') {
             setSortType('NAME_DESC');
         } else {
-            setSortType('NAME_ASC')
+            setSortType('NAME_ASC');
         }
-    }
-    const handleCityClick = e => {
-        if(sortType == 'CITY_ASC') {
+    };
+    const handleCityClick = (e) => {
+        if (sortType == 'CITY_ASC') {
             setSortType('CITY_DESC');
         } else {
-            setSortType('CITY_ASC')
+            setSortType('CITY_ASC');
         }
-    }
-    const handleStateClick = e => {
-        if(sortType == 'STATE_ASC') {
+    };
+    const handleStateClick = (e) => {
+        if (sortType == 'STATE_ASC') {
             setSortType('STATE_DESC');
         } else {
-            setSortType('STATE_ASC')
+            setSortType('STATE_ASC');
         }
-    }
+    };
+
+    let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
+    sortedRestaraunts = sortedRestaraunts.filter((r) => {
+        if (stateFilters.length < 1) return true;
+        return stateFilters.includes(r.state);
+    });
 
     return (
         <table className='results-table'>
             <tbody>
                 <tr>
                     <th onClick={handleNameClick}>
-                        <span>Name {sortType == 'NAME_ASC' && '🔼'}{sortType == 'NAME_DESC' && '🔽' }</span>
+                        <span>
+                            Name {sortType == 'NAME_ASC' && '🔼'}
+                            {sortType == 'NAME_DESC' && '🔽'}
+                        </span>
                     </th>
                     <th onClick={handleCityClick}>
-                        <span>City {sortType == 'CITY_ASC' && '🔼'}{sortType == 'CITY_DESC' && '🔽' }</span>
+                        <span>
+                            City {sortType == 'CITY_ASC' && '🔼'}
+                            {sortType == 'CITY_DESC' && '🔽'}
+                        </span>
                     </th>
-                    <th className="results-table__state" onClick={handleStateClick}>
-                        <span>State {sortType == 'STATE_ASC' && '🔼'}{sortType == 'STATE_DESC' && '🔽' }</span>
+                    <th
+                        className='results-table__state'
+                        onClick={handleStateClick}
+                    >
+                        <span>
+                            State {sortType == 'STATE_ASC' && '🔼'}
+                            {sortType == 'STATE_DESC' && '🔽'}
+                        </span>
                     </th>
                     <th>
                         <span>Phone</span>

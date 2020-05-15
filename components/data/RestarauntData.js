@@ -73,6 +73,7 @@ const RestarauntData = (props) => {
         stateFilters,
         setStateFilters
     };
+    
     return (
         <RestarauntProvider value={context}>
             {props.children}

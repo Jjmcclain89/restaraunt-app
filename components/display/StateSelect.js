@@ -1,19 +1,15 @@
 import React, { useState, useContext } from 'react';
 import Select from 'react-select';
 import { RestarauntContext } from '../data/RestarauntData';
+import StateSelectOptions from '../../resources/StateSelectOptions';
 
 const StateSelect = (props) => {
     const { stateFilters, setStateFilters } = useContext(RestarauntContext);
     const [selectedOptions, setSelectedOptions] = useState([]);
-    const options = [
-        { value: 'IA', label: 'IA' },
-        { value: 'WI', label: 'WI' },
-        { value: 'CO', label: 'CO' },
-    ];
 
     const handleChange = (selected) => {
         setSelectedOptions(selected);
-        setStateFilters(selected ? selected.map((s) => s.value) : null);
+        setStateFilters(selected ? selected.map((s) => s.value) : []);
     };
 
     return (
@@ -23,7 +19,7 @@ const StateSelect = (props) => {
             className='filter-bar__state-select'
             value={selectedOptions}
             onChange={handleChange}
-            options={options}
+            options={StateSelectOptions}
             isMulti={true}
         />
     );
