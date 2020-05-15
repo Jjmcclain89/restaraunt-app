@@ -9,7 +9,25 @@ const RestarauntData = (props) => {
     
     const context = {
         restaraunts,
-        setRestaraunts
+        sortRestaraunts
+    }
+
+    const sortRestaraunts = sortType => {
+        let sortedCopy = [...restaraunts];
+        switch(sortType) {
+            case 'NAME_ASC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.name < b.name ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
+            case 'NAME_DESC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.name > b.name ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
+        }
     }
 
     const fetchRestaraunts = async (url) => {
@@ -21,6 +39,7 @@ const RestarauntData = (props) => {
 
         const data = await res.json();
         setRestaraunts(data);
+        sortRestaraunts('NAME_DESC');
     };
 
     useEffect(() => {
