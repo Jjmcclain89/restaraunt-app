@@ -10,6 +10,8 @@ const ResultsTable = (props) => {
         sortType,
         setSortType,
         stateFilters,
+        searchText,
+        genreFilters,
     } = useContext(RestarauntContext);
 
     const handleNameClick = (e) => {
@@ -38,6 +40,14 @@ const ResultsTable = (props) => {
     sortedRestaraunts = sortedRestaraunts.filter((r) => {
         if (stateFilters.length < 1) return true;
         return stateFilters.includes(r.state);
+    });
+
+    sortedRestaraunts = sortedRestaraunts.filter((r) => {
+        const { genres } = r;
+        if (genreFilters.length < 1) return true;
+        for (let i = 0; i < genres.length; i++) {
+            if (genreFilters.includes(genres[i])) return true;
+        }
     });
 
     return (

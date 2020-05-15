@@ -12,7 +12,7 @@ const RestarauntData = (props) => {
     const [genreFilters, setGenreFilters] = useState([]);
 
     const sortRestaraunts = (restaraunts, sortType) => {
-        let sortedCopy = [...restaraunts];
+        let sortedCopy = restaraunts ? [...restaraunts] : [];
         switch (sortType) {
             case 'NAME_ASC':
                 sortedCopy = sortedCopy.sort((a, b) => {
@@ -62,8 +62,10 @@ const RestarauntData = (props) => {
     const resetFilters = () => {
         setStateFilters([]);
         setGenreFilters([]);
-    }
-    
+    };
+    // const getAllGenres = 
+    // const allGenres = []
+
     const context = {
         restaraunts,
         sortRestaraunts,
@@ -73,9 +75,11 @@ const RestarauntData = (props) => {
         setSortType,
         stateFilters,
         setStateFilters,
-        resetFilters
+        genreFilters,
+        setGenreFilters,
+        resetFilters,
     };
-    
+
     useEffect(() => {
         fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
     }, []);
