@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import {
-    processRestarauntData,
-    sortRestaraunts,
+    processRestaurantData,
+    sortRestaurants,
     getAllGenres,
 } from '../../resources/utils';
 
-export const RestarauntContext = React.createContext();
-export const RestarauntProvider = RestarauntContext.Provider;
-export const RestarauntConsumer = RestarauntContext.Consumer;
+export const RestaurantContext = React.createContext();
+export const RestaurantProvider = RestaurantContext.Provider;
+export const RestaurantConsumer = RestaurantContext.Consumer;
 
-const RestarauntData = (props) => {
-    const [restaraunts, setRestaraunts] = useState([]);
+const RestaurantData = (props) => {
+    const [restaurants, setRestaurants] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [sortType, setSortType] = useState('NAME_ASC');
     const [stateFilters, setStateFilters] = useState([]);
     const [genreFilters, setGenreFilters] = useState([]);
 
-    const fetchRestaraunts = async (url) => {
+    const fetchRestaurants = async (url) => {
         const res = await fetch(url, {
             headers: {
                 Authorization: process.env.NEXT_PUBLIC_API_KEY,
@@ -25,7 +25,7 @@ const RestarauntData = (props) => {
 
         const data = await res.json();
         // console.log(data);
-        setRestaraunts(processRestarauntData(data));
+        setRestaurants(processRestaurantData(data));
     };
 
     const resetFilters = () => {
@@ -34,11 +34,11 @@ const RestarauntData = (props) => {
         setSearchText('');
     };
 
-    const allGenres = getAllGenres(restaraunts);
+    const allGenres = getAllGenres(restaurants);
 
     const context = {
-        restaraunts,
-        sortRestaraunts,
+        restaurants,
+        sortRestaurants,
         searchText,
         setSearchText,
         sortType,
@@ -52,14 +52,14 @@ const RestarauntData = (props) => {
     };
 
     useEffect(() => {
-        fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
+        fetchRestaurants(process.env.NEXT_PUBLIC_BACKEND_URL);
     }, []);
 
     return (
-        <RestarauntProvider value={context}>
+        <RestaurantProvider value={context}>
             {props.children}
-        </RestarauntProvider>
+        </RestaurantProvider>
     );
 };
 
-export default RestarauntData;
+export default RestaurantData;

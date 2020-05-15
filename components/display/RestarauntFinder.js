@@ -3,7 +3,7 @@ import Header from './Header';
 import FilterBar from './FilterBar';
 import ResultsTable from './ResultsTable';
 
-const RestarauntFinder = (props) => {
+const RestaurantFinder = (props) => {
     return (
         <div className='app__content'>
             <Header />
@@ -13,4 +13,4 @@ const RestarauntFinder = (props) => {
     );
 };
 
-export default RestarauntFinder;
+export default RestaurantFinder;

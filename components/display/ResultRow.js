@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ResultRow = (props) => {
-    const { name, city, state, telephone, genre } = props.restaraunt;
+    const { name, city, state, telephone, genre } = props.restaurant;
 
     return (
         <tr className="result">

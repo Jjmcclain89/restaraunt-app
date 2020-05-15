@@ -1,19 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { RestarauntContext } from '../data/RestarauntData';
+import { RestaurantContext } from '../data/RestaurantData';
 import ResultRow from './ResultRow';
 import NoResults from './NoResults';
 import PageSelector from './PageSelector';
 
 const ResultsTable = (props) => {
     const {
-        restaraunts,
-        sortRestaraunts,
+        restaurants,
+        sortRestaurants,
         sortType,
         setSortType,
         stateFilters,
         searchText,
         genreFilters,
-    } = useContext(RestarauntContext);
+    } = useContext(RestaurantContext);
 
     const [pageNumber, setPageNumber] = useState(1);
     const [resultsPerPage, setResultsPerPage] = useState(10);
@@ -40,9 +40,9 @@ const ResultsTable = (props) => {
         }
     };
 
-    const searchRestaraunts = (restaraunts, searchText) => {
+    const searchRestaurants = (restaurants, searchText) => {
         searchText = searchText.toLowerCase();
-        restaraunts = [...restaraunts].filter((r) => {
+        restaurants = [...restaurants].filter((r) => {
             if (r.name.toLowerCase().includes(searchText)) return true;
             if (r.city.toLowerCase().includes(searchText)) return true;
 
@@ -51,16 +51,16 @@ const ResultsTable = (props) => {
                 if (genres[i].toLowerCase().includes(searchText)) return true;
             }
         });
-        return restaraunts;
+        return restaurants;
     };
 
-    let sortedRestaraunts = sortRestaraunts(restaraunts, sortType);
-    sortedRestaraunts = sortedRestaraunts.filter((r) => {
+    let sortedRestaurants = sortRestaurants(restaurants, sortType);
+    sortedRestaurants = sortedRestaurants.filter((r) => {
         if (stateFilters.length < 1) return true;
         return stateFilters.includes(r.state);
     });
 
-    sortedRestaraunts = sortedRestaraunts.filter((r) => {
+    sortedRestaurants = sortedRestaurants.filter((r) => {
         const { genre: genres } = r;
         if (genreFilters.length < 1) return true;
         for (let i = 0; i < genres.length; i++) {
@@ -68,11 +68,11 @@ const ResultsTable = (props) => {
         }
     });
 
-    sortedRestaraunts = searchRestaraunts(sortedRestaraunts, searchText);
+    sortedRestaurants = searchRestaurants(sortedRestaurants, searchText);
 
-    const totalPageCount = Math.ceil(sortedRestaraunts.length / resultsPerPage);
+    const totalPageCount = Math.ceil(sortedRestaurants.length / resultsPerPage);
 
-    sortedRestaraunts = sortedRestaraunts.slice((pageNumber-1)*resultsPerPage, pageNumber*resultsPerPage);
+    sortedRestaurants = sortedRestaurants.slice((pageNumber-1)*resultsPerPage, pageNumber*resultsPerPage);
 
 
     return (
@@ -108,15 +108,15 @@ const ResultsTable = (props) => {
                             <span>Genres</span>
                         </th>
                     </tr>
-                    {sortedRestaraunts.map((restaraunt) => (
+                    {sortedRestaurants.map((restaurant) => (
                         <ResultRow
-                            key={restaraunt.id}
-                            restaraunt={restaraunt}
+                            key={restaurant.id}
+                            restaurant={restaurant}
                         />
                     ))}
                 </tbody>
             </table>
-            {sortedRestaraunts.length < 1 && <NoResults />}
+            {sortedRestaurants.length < 1 && <NoResults />}
             <PageSelector
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}

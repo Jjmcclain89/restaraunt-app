@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { RestarauntContext } from '../data/RestarauntData';
+import { RestaurantContext } from '../data/RestaurantData';
 import Select from './SelectInput';
 import StateSelectOptions from '../../resources/StateSelectOptions';
 import SearchBar from './SearchBar'
@@ -14,7 +14,7 @@ const FilterBar = (props) => {
         setGenreFilters,
         allGenres,
         resetFilters,
-    } = useContext(RestarauntContext);
+    } = useContext(RestaurantContext);
 
     const selectedStates = stateFilters.map((filter) => {
         return { value: filter, label: filter };

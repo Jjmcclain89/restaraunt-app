@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { RestarantContext, RestarauntContext } from '../data/RestarauntData';
+import { RestarantContext, RestaurantContext } from '../data/RestaurantData';
 
 const NoResults = (props) => {
-    const { resetFilters } = useContext(RestarauntContext);
+    const { resetFilters } = useContext(RestaurantContext);
     return (
         <div className='no-results'>
-            <span>There are no restaraunts to display</span>
+            <span>There are no restaurants to display</span>
             <span className='reset' onClick={resetFilters}>
                 Reset Filters?
             </span>

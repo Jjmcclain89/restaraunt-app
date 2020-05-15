@@ -1,1 +1,1 @@
-This is a Next.js React app. It is hosted, with CI/CD, at https://restaraunt-finder.herokuapp.com/
+This is a Next.js React app. It is hosted, with CI/CD, at https://restaurant-finder.herokuapp.com/

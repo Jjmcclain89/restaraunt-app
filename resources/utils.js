@@ -1,13 +1,13 @@
-export const processRestarauntData = (data) => {
+export const processRestaurantData = (data) => {
     const finishedData = [...data];
-    finishedData.map((restaraunt) => {
-        restaraunt.genre = restaraunt.genre.split(',');
+    finishedData.map((restaurant) => {
+        restaurant.genre = restaurant.genre.split(',');
     });
     return finishedData;
 };
 
-export const sortRestaraunts = (restaraunts, sortType) => {
-    let sortedCopy = restaraunts ? [...restaraunts] : [];
+export const sortRestaurants = (restaurants, sortType) => {
+    let sortedCopy = restaurants ? [...restaurants] : [];
     switch (sortType) {
         case 'NAME_ASC':
             sortedCopy = sortedCopy.sort((a, b) => {
@@ -43,10 +43,10 @@ export const sortRestaraunts = (restaraunts, sortType) => {
     return sortedCopy;
 };
 
-export const getAllGenres = (restaraunts) => {
-    if (!restaraunts) return;
+export const getAllGenres = (restaurants) => {
+    if (!restaurants) return;
     const allGenres = new Set();
-    // Map over each genre array of each restaraunt
-    restaraunts.map((r) => r.genre.map((genre) => allGenres.add(genre)));
+    // Map over each genre array of each restaurant
+    restaurants.map((r) => r.genre.map((genre) => allGenres.add(genre)));
     return [...allGenres];
 };

@@ -1,11 +1,11 @@
-import RestarauntData from '../components/data/RestarauntData';
-import RestarauntFinder from '../components/display/RestarauntFinder';
+import RestaurantData from '../components/data/RestaurantData';
+import RestaurantFinder from '../components/display/RestaurantFinder';
 import './index.scss';
 
 export default function Home() {
     return (
-        <RestarauntData>
-            <RestarauntFinder />
-        </RestarauntData>
+        <RestaurantData>
+            <RestaurantFinder />
+        </RestaurantData>
     );
 }
