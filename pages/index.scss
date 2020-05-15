@@ -1,3 +1,6 @@
-body {
-    font-size: 16px;
-}
+// import variables folder
+@import './variables.scss';
+
+// import each stylesheet
+@import '../styles/RestarauntFinder.scss';
+@import '../styles/Result.scss';
