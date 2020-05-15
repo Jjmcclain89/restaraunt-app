@@ -2,5 +2,7 @@
 @import './variables.scss';
 
 // import each stylesheet
+@import '../styles/style.scss';
+@import '../styles/Header.scss';
 @import '../styles/RestarauntFinder.scss';
 @import '../styles/Result.scss';
