@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { sortRestaraunts } from '../../resources/utils';
 
 export const RestarauntContext = React.createContext();
 export const RestarauntProvider = RestarauntContext.Provider;
@@ -10,43 +11,6 @@ const RestarauntData = (props) => {
     const [sortType, setSortType] = useState('NAME_ASC');
     const [stateFilters, setStateFilters] = useState([]);
     const [genreFilters, setGenreFilters] = useState([]);
-
-    const sortRestaraunts = (restaraunts, sortType) => {
-        let sortedCopy = restaraunts ? [...restaraunts] : [];
-        switch (sortType) {
-            case 'NAME_ASC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.name < b.name ? -1 : 1;
-                });
-                break;
-            case 'NAME_DESC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.name > b.name ? -1 : 1;
-                });
-                break;
-            case 'CITY_ASC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.city < b.city ? -1 : 1;
-                });
-                break;
-            case 'CITY_DESC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.city > b.city ? -1 : 1;
-                });
-                break;
-            case 'STATE_ASC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.state < b.state ? -1 : 1;
-                });
-                break;
-            case 'STATE_DESC':
-                sortedCopy = sortedCopy.sort((a, b) => {
-                    return a.state > b.state ? -1 : 1;
-                });
-                break;
-        }
-        return sortedCopy;
-    };
 
     const fetchRestaraunts = async (url) => {
         const res = await fetch(url, {
@@ -63,8 +27,8 @@ const RestarauntData = (props) => {
         setStateFilters([]);
         setGenreFilters([]);
     };
-    // const getAllGenres = 
-    // const allGenres = []
+
+    const allGenres = getAllGenres(restaraunts);
 
     const context = {
         restaraunts,
@@ -75,6 +39,7 @@ const RestarauntData = (props) => {
         setSortType,
         stateFilters,
         setStateFilters,
+        allGenres,
         genreFilters,
         setGenreFilters,
         resetFilters,
