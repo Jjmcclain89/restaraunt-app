@@ -27,6 +27,30 @@ const RestarauntData = (props) => {
                 })
                 setRestaraunts(sortedCopy);
             break;
+            case 'CITY_ASC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.city < b.city ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
+            case 'CITY_DESC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.city > b.city ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
+            case 'STATE_ASC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.state < b.state ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
+            case 'STATE_DESC':
+                sortedCopy = sortedCopy.sort( (a,b)=> {
+                    return a.state > b.state ? -1 : 1; 
+                })
+                setRestaraunts(sortedCopy);
+            break;
         }
     }
 
@@ -39,7 +63,7 @@ const RestarauntData = (props) => {
 
         const data = await res.json();
         setRestaraunts(data);
-        sortRestaraunts('NAME_DESC');
+        sortRestaraunts('NAME_ASC');
     };
 
     useEffect(() => {
