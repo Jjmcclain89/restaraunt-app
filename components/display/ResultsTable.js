@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { RestarauntContext } from '../data/RestarauntData';
 import ResultRow from './ResultRow';
+import NoResults from './NoResults';
 
 const ResultsTable = (props) => {
     const {
@@ -40,42 +41,48 @@ const ResultsTable = (props) => {
     });
 
     return (
-        <table className='results-table'>
-            <tbody>
-                <tr>
-                    <th onClick={handleNameClick}>
-                        <span>
-                            Name {sortType == 'NAME_ASC' && '🔼'}
-                            {sortType == 'NAME_DESC' && '🔽'}
-                        </span>
-                    </th>
-                    <th onClick={handleCityClick}>
-                        <span>
-                            City {sortType == 'CITY_ASC' && '🔼'}
-                            {sortType == 'CITY_DESC' && '🔽'}
-                        </span>
-                    </th>
-                    <th
-                        className='results-table__state'
-                        onClick={handleStateClick}
-                    >
-                        <span>
-                            State {sortType == 'STATE_ASC' && '🔼'}
-                            {sortType == 'STATE_DESC' && '🔽'}
-                        </span>
-                    </th>
-                    <th>
-                        <span>Phone</span>
-                    </th>
-                    <th>
-                        <span>Genres</span>
-                    </th>
-                </tr>
-                {sortedRestaraunts.map((restaraunt) => (
-                    <ResultRow key={restaraunt.id} restaraunt={restaraunt} />
-                ))}
-            </tbody>
-        </table>
+        <>
+            <table className='results-table'>
+                <tbody>
+                    <tr>
+                        <th onClick={handleNameClick}>
+                            <span>
+                                Name {sortType == 'NAME_ASC' && '🔼'}
+                                {sortType == 'NAME_DESC' && '🔽'}
+                            </span>
+                        </th>
+                        <th onClick={handleCityClick}>
+                            <span>
+                                City {sortType == 'CITY_ASC' && '🔼'}
+                                {sortType == 'CITY_DESC' && '🔽'}
+                            </span>
+                        </th>
+                        <th
+                            className='results-table__state'
+                            onClick={handleStateClick}
+                        >
+                            <span>
+                                State {sortType == 'STATE_ASC' && '🔼'}
+                                {sortType == 'STATE_DESC' && '🔽'}
+                            </span>
+                        </th>
+                        <th>
+                            <span>Phone</span>
+                        </th>
+                        <th>
+                            <span>Genres</span>
+                        </th>
+                    </tr>
+                    {sortedRestaraunts.map((restaraunt) => (
+                        <ResultRow
+                            key={restaraunt.id}
+                            restaraunt={restaraunt}
+                        />
+                    ))}
+                </tbody>
+            </table>
+            {sortedRestaraunts.length < 1 && <NoResults />}
+        </>
     );
 };
 

@@ -1,0 +1,23 @@
+.no-results {
+    display: flex;
+    flex-direction: column;
+    border: 0.5rem dashed gray;
+    border-radius: 0.5rem;
+    padding: 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: gray;
+    span {
+        width: fit-content;
+        margin: auto;
+    }
+    .reset {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: blue;
+        &:hover {
+            color: red;
+            cursor: pointer;
+        }
+    }
+}

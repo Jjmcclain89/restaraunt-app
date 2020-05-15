@@ -5,10 +5,12 @@ import StateSelectOptions from '../../resources/StateSelectOptions';
 
 const StateSelect = (props) => {
     const { stateFilters, setStateFilters } = useContext(RestarauntContext);
-    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const selectedOptions = stateFilters.map((filter) => {
+        return { value: filter, label: filter };
+    });
 
     const handleChange = (selected) => {
-        setSelectedOptions(selected);
         setStateFilters(selected ? selected.map((s) => s.value) : []);
     };
 

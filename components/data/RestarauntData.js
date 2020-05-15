@@ -59,10 +59,11 @@ const RestarauntData = (props) => {
         setRestaraunts(data);
     };
 
-    useEffect(() => {
-        fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
-    }, []);
-
+    const resetFilters = () => {
+        setStateFilters([]);
+        setGenreFilters([]);
+    }
+    
     const context = {
         restaraunts,
         sortRestaraunts,
@@ -71,9 +72,14 @@ const RestarauntData = (props) => {
         sortType,
         setSortType,
         stateFilters,
-        setStateFilters
+        setStateFilters,
+        resetFilters
     };
     
+    useEffect(() => {
+        fetchRestaraunts(process.env.NEXT_PUBLIC_BACKEND_URL);
+    }, []);
+
     return (
         <RestarauntProvider value={context}>
             {props.children}
